@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Class1</string>
+    <string name="hint_login">Username</string>
+    <string name="hint_password">Password</string>
+    <string name="login">Login</string>
+    <string name="login_empty">Login can\'t be empty</string>
+    <string name="password_empty">Password can\'t be empty</string>
+    <string name="wrong_credentials">The user or password is incorrect</string>
+    <string name="fragment1">Fragment 1</string>
+    <string name="fragment2">Fragment 2</string>
+</resources>
