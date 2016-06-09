@@ -48,10 +48,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void validateLogin(String user, String password) {
-        if(user.equals("unam") && password.equals("contraseña"))
+        if(user.equals("unam") && password.equals("superpassword"))
         {
             //iniciamos la actividad con contenido
-            startActivity(new Intent(getApplicationContext(),ActivityContent.class));
+            startActivity(new Intent(getApplicationContext(),ActivityContent.class).putExtra("user",user));
         }else
             showError(R.string.wrong_credentials);
     }

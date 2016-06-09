@@ -8,4 +8,6 @@
     <string name="wrong_credentials">The user or password is incorrect</string>
     <string name="fragment1">Fragment 1</string>
     <string name="fragment2">Fragment 2</string>
+    <string name="add_item">Agregar Item</string>
+    <string name="item_empty">Item can\'t be empty</string>
 </resources>

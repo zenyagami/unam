@@ -3,10 +3,16 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
     <ImageView
-        android:src="@drawable/"
         android:layout_marginTop="16dp"
         android:layout_gravity="center"
         android:layout_width="56dp"
         android:layout_height="56dp" />
+    <TextView
+        android:textSize="18sp"
+        android:gravity="center"
+        android:id="@+id/txtUsername"
+        android:layout_marginTop="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>
