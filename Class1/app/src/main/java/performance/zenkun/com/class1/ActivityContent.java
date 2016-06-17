@@ -12,8 +12,10 @@ import android.util.Log;
 import android.view.View;
 
 import android.widget.TextView;
+import java.util.List;
 import performance.zenkun.com.class1.fragment.FragmentItem;
 import performance.zenkun.com.class1.fragment.FragmentProfile;
+import performance.zenkun.com.class1.model.ModelItem;
 import service.ServiceCounter;
 
 /**
@@ -43,6 +45,8 @@ public class ActivityContent extends AppCompatActivity implements View.OnClickLi
         findViewById(R.id.btnFragment2).setOnClickListener(this);
         user = getIntent().getExtras().getString("user");
         txtSession = (TextView) findViewById(R.id.txtSessionLenght);
+        //we read all items
+
     }
 
     @Override

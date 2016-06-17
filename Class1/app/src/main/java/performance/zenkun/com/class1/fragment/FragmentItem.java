@@ -13,9 +13,11 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import java.util.List;
 import performance.zenkun.com.class1.R;
 import performance.zenkun.com.class1.adapter.AdapterItem;
 import performance.zenkun.com.class1.model.ModelItem;
+import performance.zenkun.com.class1.sql.ItemDataSource;
 
 /**
  * Created by hacke on 09/06/2016.
@@ -24,8 +26,15 @@ import performance.zenkun.com.class1.model.ModelItem;
 public class FragmentItem extends Fragment implements View.OnClickListener {
     private ListView lv;
     private EditText mItem;
-    private ArrayList<ModelItem> itemList= new ArrayList<>();
+    private ItemDataSource itemDataSource;
+   // private ArrayList<ModelItem> itemList= new ArrayList<>();
     private int counter;
+
+    @Override public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        itemDataSource= new ItemDataSource(getActivity());
+      List<ModelItem> items = itemDataSource.getAllItems();
+    }
 
     @Nullable
     @Override
@@ -34,6 +43,7 @@ public class FragmentItem extends Fragment implements View.OnClickListener {
         view.findViewById(R.id.btnAddItem).setOnClickListener(this);
         lv = (ListView) view.findViewById(R.id.itemList);
         mItem = (EditText) view.findViewById(R.id.mIteDesc);
+        lv.setAdapter(new AdapterItem(getActivity(),itemDataSource.getAllItems()));
         return view;
     }
 
@@ -56,8 +66,8 @@ public class FragmentItem extends Fragment implements View.OnClickListener {
             ModelItem m = new ModelItem();
             m.id=counter;
             m.name =item;
-            itemList.add(m);
-            lv.setAdapter(new AdapterItem(getActivity(),itemList));
+            itemDataSource.saveItem(m);
+            lv.setAdapter(new AdapterItem(getActivity(),itemDataSource.getAllItems()));
             counter++;
         }
     }
