@@ -16,6 +16,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ActivityContent"/>
+        <activity android:name=".ActivityRegister"/>
+        <service android:name="service.ServiceCounter"/>
     </application>
 
 </manifest>

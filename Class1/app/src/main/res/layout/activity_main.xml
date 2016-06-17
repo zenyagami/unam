@@ -22,10 +22,25 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+   <Button
+            android:layout_weight="1"
+            android:id="@+id/btnRegister"
+            android:layout_marginTop="16dp"
+            android:text="@string/register"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
     <Button
+        android:layout_weight="1"
         android:id="@+id/btnLogin"
         android:layout_marginTop="16dp"
         android:text="@string/login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+    </LinearLayout>
 </LinearLayout>
