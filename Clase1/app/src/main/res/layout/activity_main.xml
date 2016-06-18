@@ -36,7 +36,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <Space
+        <Button
+            android:id="@+id/btnRegisterLogin"
+            android:text="Register"
             android:visibility="visible"
             android:layout_weight="1"
             android:layout_width="match_parent"

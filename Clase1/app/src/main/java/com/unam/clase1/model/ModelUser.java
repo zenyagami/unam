@@ -8,4 +8,8 @@ public class ModelUser {
     public String password;
 
 
+    public ModelUser(String userName, String password) {
+        this.userName = userName;
+        this.password = password;
+    }
 }

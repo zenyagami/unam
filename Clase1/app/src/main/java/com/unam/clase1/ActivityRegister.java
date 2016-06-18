@@ -6,6 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 
+import com.unam.clase1.model.ModelUser;
+import com.unam.clase1.util.PreferenceUtil;
+
 /**
  * Created by hacke on 17/06/2016.
  */
@@ -23,7 +26,9 @@ public class ActivityRegister extends AppCompatActivity {
              String password= mPassword.getText().toString();
              //salvar al disco ;)
                 //TODO validar si vienen vacios
-
+                PreferenceUtil util = new PreferenceUtil(getApplicationContext());
+                util.saveUser(new ModelUser(mUserName,password));
+                finish();
 
 
             }

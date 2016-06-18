@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.unam.clase1.R;
 import com.unam.clase1.adapters.AdapterItemList;
 import com.unam.clase1.model.ModelItem;
+import com.unam.clase1.sql.ItemDataSource;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,9 +25,16 @@ import java.util.List;
  */
 public class FragmentList extends Fragment {
     private ListView listView;
-    private List<ModelItem> array = new ArrayList<>();
+   // private List<ModelItem> array = new ArrayList<>();
     private int counter;
     private boolean isWifi;
+    private ItemDataSource itemDataSource;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        itemDataSource = new ItemDataSource(getActivity());
+    }
 
     @Nullable
     @Override
@@ -38,10 +46,14 @@ public class FragmentList extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 AdapterItemList adapter= (AdapterItemList) parent.getAdapter();
                 ModelItem modelItem =adapter.getItem(position);
-                ModelItem modelItem2 = array.get(position);
-                Toast.makeText(getActivity(),modelItem2.item,Toast.LENGTH_SHORT).show();
+               // ModelItem modelItem2 = array.get(position);
+                Toast.makeText(getActivity(),modelItem.item,Toast.LENGTH_SHORT).show();
             }
         });
+        List<ModelItem> modelItemList = itemDataSource.getAllItems();
+        isWifi = !(modelItemList.size()%2==0);
+        counter = modelItemList.size();
+        listView.setAdapter(new AdapterItemList(getActivity(),modelItemList));
 
 
         final EditText mItemsText = (EditText) view.findViewById(R.id.mItemText);
@@ -55,8 +67,9 @@ public class FragmentList extends Fragment {
                     item.item=itemData;
                     item.id  = "Description "+counter;
                     item.resourceId=isWifi?R.drawable.ic_device_signal_wifi_4_bar:R.drawable.ic_action_settings_voice;
-                    array.add(item);
-                    listView.setAdapter(new AdapterItemList(getActivity(),array));
+                    //array.add(item);
+                    itemDataSource.saveItem(item);
+                    listView.setAdapter(new AdapterItemList(getActivity(),itemDataSource.getAllItems()));
                     isWifi=!isWifi;
                     counter++;
                     mItemsText.setText("");
