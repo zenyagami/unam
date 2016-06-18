@@ -9,12 +9,16 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.unam.clase1.model.ModelUser;
 import com.unam.clase1.service.ServiceTimer;
 import com.unam.clase1.sql.ItemDataSource;
 import com.unam.clase1.util.PreferenceUtil;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -59,6 +63,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Log.d(ServiceTimer.TAG,"Checkeo es: "+isChecked);
             }
         });
+        ((TextView)findViewById(R.id.txtDate))
+                .setText(new SimpleDateFormat("dd-MMM-yy hh:mm").format(new Date()));
     }
 
 
