@@ -51,5 +51,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </LinearLayout>
+    <CheckBox
+        android:layout_marginTop="16dp"
+        android:layout_below="@+id/activity_main_password"
+        android:id="@+id/chkRememberMe"
+        android:text="Remember credentials"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 </RelativeLayout>

@@ -23,7 +23,7 @@ public class ServiceTimer extends Service {
             Intent i = new Intent(ACTION_SEND_TIMER);
             i.putExtra("timer",counter);
             sendBroadcast(i);
-            Log.d(TAG,"contador "+counter);
+          //  Log.d(TAG,"contador "+counter);
         }
     };
     @Nullable

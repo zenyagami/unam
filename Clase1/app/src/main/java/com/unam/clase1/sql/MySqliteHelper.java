@@ -4,13 +4,16 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.BaseColumns;
+import android.util.Log;
+
+import com.unam.clase1.service.ServiceTimer;
 
 /**
  * Created by hacke on 17/06/2016.
  */
 public class MySqliteHelper extends SQLiteOpenHelper {
     private final static String DATABASE_NAME ="unamsqlite";
-    private final static int DATABASE_VERSION=1;
+    private final static int DATABASE_VERSION=2;
     public static final String TABLE_NAME ="item_table";
     public static final String COLUMN_ID = BaseColumns._ID;
     public static final String COLUMN_ITEM_NAME = "name";
@@ -33,10 +36,12 @@ public class MySqliteHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_TABLE);
+        //create user table
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+        Log.d(ServiceTimer.TAG,"OnUpgrade SQL from "+oldVersion+ " to "+newVersion);
+        
     }
 }
