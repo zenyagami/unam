@@ -16,7 +16,6 @@ public class PreferenceUtil {
     public PreferenceUtil(Context context)
     {
         sp = context.getSharedPreferences(FILE_NAME,Context.MODE_PRIVATE);
-
     }
     public void saveUser(ModelUser modelUser)
     {

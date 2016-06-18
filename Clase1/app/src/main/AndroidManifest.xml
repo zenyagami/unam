@@ -16,7 +16,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ActivityDetail"/>
-        <activity android:name=".ActivityRegister"/>
+        <activity android:name=".ActivityRegister" android:windowSoftInputMode="stateHidden"/>
     </application>
 
 </manifest>
