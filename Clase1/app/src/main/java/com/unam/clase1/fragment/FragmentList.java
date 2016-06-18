@@ -66,7 +66,7 @@ public class FragmentList extends Fragment {
                 {
                     ModelItem item =new ModelItem();
                     item.item=itemData;
-                    item.id  = "Description "+counter;
+                    item.description  = "Description "+counter;
                     item.resourceId=isWifi?R.drawable.ic_device_signal_wifi_4_bar:R.drawable.ic_action_settings_voice;
                     //array.add(item);
                     itemDataSource.saveItem(item);

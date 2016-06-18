@@ -24,7 +24,7 @@ public class ItemDataSource {
     {
         ContentValues contentValues = new ContentValues();
         contentValues.put(MySqliteHelper.COLUMN_ITEM_NAME,modelItem.item);
-        contentValues.put(MySqliteHelper.COLUMN_ITEM_DESC,modelItem.id);
+        contentValues.put(MySqliteHelper.COLUMN_ITEM_DESC,modelItem.description);
         contentValues.put(MySqliteHelper.COLUMN_ITEM_RESOURCE,modelItem.resourceId);
         db.insert(MySqliteHelper.TABLE_NAME,null,contentValues);
     }
@@ -39,7 +39,7 @@ public class ItemDataSource {
             int resourceId = cursor.getInt(cursor.getColumnIndexOrThrow(MySqliteHelper.COLUMN_ITEM_RESOURCE));
             ModelItem modelItem = new ModelItem();
             modelItem.resourceId=resourceId;
-            modelItem.id=desccription;
+            modelItem.description=desccription;
             modelItem.item=itemName;
             modelItemList.add(modelItem);
         }

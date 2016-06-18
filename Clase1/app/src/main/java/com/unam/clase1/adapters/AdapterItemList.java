@@ -34,7 +34,7 @@ public class AdapterItemList extends ArrayAdapter<ModelItem> {
 
         ModelItem modelItem=getItem(position);
         txtTitle.setText(modelItem.item);
-        txtItemDescription.setText(modelItem.id);
+        txtItemDescription.setText(modelItem.description);
         img.setImageResource(modelItem.resourceId);
         return convertView;
     }
