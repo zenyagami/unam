@@ -9,6 +9,7 @@ import android.os.BatteryManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -77,17 +78,20 @@ public class ActivityDetail extends AppCompatActivity implements View.OnClickLis
         IntentFilter filter = new IntentFilter();
         filter.addAction(ServiceTimer.ACTION_SEND_TIMER);
         registerReceiver(broadcastReceiver,filter);
+        Log.d(ServiceTimer.TAG,"OnResume, se reinicia boradcast");
     }
 
     @Override
     protected void onPause() {
         super.onPause();
+        Log.d(ServiceTimer.TAG,"onPause quitando broadcast");
         unregisterReceiver(broadcastReceiver);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        Log.d(ServiceTimer.TAG,"OnDestroy, terminando servicio");
         stopService(new Intent(getApplicationContext(),ServiceTimer.class));
     }
 }
