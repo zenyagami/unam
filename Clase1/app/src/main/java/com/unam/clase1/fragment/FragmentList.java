@@ -2,8 +2,10 @@ package com.unam.clase1.fragment;
 
 import android.app.Fragment;
 import android.app.NotificationManager;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +15,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+//import com.unam.clase1.R;
 import com.unam.clase1.R;
 import com.unam.clase1.adapters.AdapterItemList;
 import com.unam.clase1.model.ModelItem;
@@ -55,6 +58,31 @@ public class FragmentList extends Fragment {
         isWifi = !(modelItemList.size()%2==0);
         counter = modelItemList.size();
         listView.setAdapter(new AdapterItemList(getActivity(),modelItemList));
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                AdapterItemList adapter =(AdapterItemList) parent.getAdapter();
+                final ModelItem modelItem =adapter.getItem(position);
+
+                new AlertDialog.Builder(getActivity())
+                        .setTitle(R.string.delete_title)
+                        .setMessage(String.format("¿Desea borrar el elemento %s?",modelItem.item))
+                        .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                itemDataSource.deleteItem(modelItem);
+                                listView.setAdapter(new AdapterItemList(getActivity(),
+                                        itemDataSource.getAllItems()));
+                            }
+                        }).setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                }).setCancelable(false).create().show();
+                return true;
+            }
+        });
 
 
         final EditText mItemsText = (EditText) view.findViewById(R.id.mItemText);
