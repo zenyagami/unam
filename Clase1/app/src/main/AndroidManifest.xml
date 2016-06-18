@@ -17,6 +17,7 @@
         </activity>
         <activity android:name=".ActivityDetail"/>
         <activity android:name=".ActivityRegister" android:windowSoftInputMode="stateHidden"/>
+        <service android:name=".service.ServiceTimer"/>
     </application>
 
 </manifest>

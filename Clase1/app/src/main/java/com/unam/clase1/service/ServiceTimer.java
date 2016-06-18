@@ -1,0 +1,43 @@
+package com.unam.clase1.service;
+
+import android.app.Service;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.IBinder;
+import android.support.annotation.Nullable;
+
+/**
+ * Created by hacke on 18/06/2016.
+ */
+public class ServiceTimer extends Service {
+    public static final String ACTION_SEND_TIMER ="com.unam.clase.SEND_TIMER";
+    int counter;
+    private Handler handler = new Handler();
+    private Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            counter++;
+            handler.postDelayed(runnable,1000);
+            Intent i = new Intent(ACTION_SEND_TIMER);
+            i.putExtra("timer",counter);
+            sendBroadcast(i);
+        }
+    };
+    @Nullable
+    @Override
+    public IBinder onBind(Intent intent) {
+        return null;
+    }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        handler.post(runnable);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        handler.removeCallbacks(runnable);
+    }
+}

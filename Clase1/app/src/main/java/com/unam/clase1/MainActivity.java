@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.unam.clase1.model.ModelUser;
+import com.unam.clase1.service.ServiceTimer;
 import com.unam.clase1.util.PreferenceUtil;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -68,6 +69,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     Intent intent= new Intent(getApplicationContext(),ActivityDetail.class);
                     intent.putExtra("key_user",user);
                     startActivity(intent);
+                    startService(new Intent(getApplicationContext(), ServiceTimer.class));
                 }
                 else
                     Toast.makeText(getApplicationContext(),"Error",Toast.LENGTH_SHORT).show();
