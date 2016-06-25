@@ -20,9 +20,8 @@
         android:id="@+id/txtNombre"
         android:layout_marginTop="16dp"
         android:text="Nombre"
+        style="@style/TextviewTItle"
         android:gravity="center"
-        android:textStyle="bold"
-        android:textSize="22sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     <TextView
