@@ -17,7 +17,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-
     <EditText
         android:id="@+id/etName"
         android:hint="Nombre"
@@ -31,7 +30,11 @@
     <Button
         android:text="salvar"
         android:id="@+id/btnSave"
-        android:layout_width="match_parent"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content" />
+    <ImageView
+        android:src="@drawable/ic_stat_action_perm_identity"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 </LinearLayout>
 </LinearLayout>

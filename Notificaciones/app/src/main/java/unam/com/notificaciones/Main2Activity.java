@@ -10,6 +10,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import unam.com.notificaciones.service.ServiceNotification;
 
 public class Main2Activity extends AppCompatActivity {
 
@@ -40,7 +43,8 @@ public class Main2Activity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        return super.onCreateOptionsMenu(menu);
+        getMenuInflater().inflate(R.menu.menu_activity_2,menu);
+        return true;
     }
 
     @Override
@@ -49,6 +53,13 @@ public class Main2Activity extends AppCompatActivity {
         {
             case android.R.id.home:
                 finish();
+                return true;
+            case R.id.menu_start_notification:
+                startService(new Intent(getApplicationContext(), ServiceNotification.class));
+                return true;
+            case R.id.menu_update:
+                Toast.makeText(getApplicationContext(),R.string.app_name
+                        ,Toast.LENGTH_SHORT).show();
                 return true;
         }
 
