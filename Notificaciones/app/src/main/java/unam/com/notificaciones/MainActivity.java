@@ -3,6 +3,7 @@ package unam.com.notificaciones;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
@@ -23,6 +24,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.btnEdit).setOnClickListener(this);
         txtName = (TextView)findViewById(R.id.txtNombre);
         txtDesc = (TextView)findViewById(R.id.txtDescription);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(R.string.app_name);
+        getSupportActionBar().setIcon(android.R.drawable.sym_def_app_icon);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        //getSupportActionBar().setLogo(R.drawable.ic_stat_action_perm_identity);
+
     }
 
     @Override
@@ -48,6 +56,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             String desc = data.getExtras().getString("key_desc","");
             txtName.setText(name);
             txtDesc.setText(desc);
+            getSupportActionBar().setTitle(name);
         }else
             super.onActivityResult(requestCode, resultCode, data);
     }
